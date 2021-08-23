@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'django-insecure-=axuy)_^%lsgg)(g%p6zea9(#4yl)mt5u&5dryx=g2c61t$_f('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,9 +82,9 @@ DATABASES = {
     }
 }
 
-# import dj_database_url
-# db_from_env = dj_database_url.config(conn_max_age=600)
-# DATABASES['default'].update(db_from_env)
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -142,9 +142,9 @@ CELERY_STORE_ERRORS_EVEN_IF_IGNORED = True
 CELERY_TASK_ALWAYS_EAGER = True
 
 CELERY_BEAT_SCHEDULE = {
-    # Executes every Friday at 4pm
-    'send-notification-on-friday-afternoon': { 
+    # Executes every hour.
+    'collect-news-every-hour': { 
          'task': 'databases.task.demo_program', 
-         'schedule':  3600.0 #crontab(minute='*/59'),
+         'schedule':  3600.0,
         },          
 }
