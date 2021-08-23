@@ -22,12 +22,14 @@ headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Geck
                }
 
 def homepage(request):
-    r = requests.get(f'https://news.google.com/topstories?hl=en-IN&gl=IN&ceid=IN:en', headers=headers)
-    print("yes")
-    data = r.text
-    soup = BeautifulSoup(data, features="html.parser")
+    # r = requests.get(f'https://news.google.com/topstories?hl=en-IN&gl=IN&ceid=IN:en', headers=headers)
+    # print("yes")
+    # data = r.text
+    # soup = BeautifulSoup(data, features="html.parser")
     
-    demo_program.delay()
+    # demo_program.delay()
+    news = News.objects.all()
+    # print(news)
     # # Get the url request to extract the number of results for the query.
     # r = requests.get(f'https://news.google.com/topstories?hl=en-IN&gl=IN&ceid=IN:en', headers=headers)
     # data = r.text
@@ -62,4 +64,8 @@ def homepage(request):
     #                     print("End----------------------------------------------------------------------------------------------------")
       
         # something.delay()
-    return HttpResponse("Working")
+    params = {
+        'news': news,
+        }
+    demo_program.delay()
+    return render(request, 'internship/index.html', params)

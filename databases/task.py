@@ -52,7 +52,7 @@ def demo_program():
                     pass
                 else:
                     text_link = text_link.get('href')
-                    text_link= text_link.replace("./", "news.google.com/")
+                    text_link= text_link.replace("./", "https://news.google.com/")
                     if text_a==None and text_link==None:
                         pass
                     else:
