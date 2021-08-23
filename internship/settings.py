@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-=axuy)_^%lsgg)(g%p6zea9(#4yl)mt5u&5dryx=g2c61t$_f(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['googlenews-scraper.herokuapp.com']
 
 
 # Application definition
