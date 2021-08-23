@@ -135,20 +135,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #For celery
 from celery.schedules import crontab 
 CELERY_BROKER_URL = config('REDIS_URL')
-#CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = config('REDIS_URL')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-#CELERY_STORE_ERRORS_EVEN_IF_IGNORED = True
-#CELERY_TASK_ALWAYS_EAGER = True
-CELERY_TIMEZONE = 'Asia/Kolkata'
+CELERY_STORE_ERRORS_EVEN_IF_IGNORED = True
+CELERY_TASK_ALWAYS_EAGER = True
 
 #CELERY BEAT
 #CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
-# CELERY_BEAT_SCHEDULE = {
-#     # Executes every hour.
-#     'collect-news-every-hour': { 
-#          'task': 'databases.task.demo_program', 
-#          'schedule':  60.0,
-#         },          
-# }
+CELERY_BEAT_SCHEDULE = {
+    # Executes every hour.
+    'collect-news-every-hour': { 
+         'task': 'databases.task.demo_program', 
+         'schedule':  60.0,
+        },          
+}
