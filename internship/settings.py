@@ -145,6 +145,6 @@ CELERY_BEAT_SCHEDULE = {
     # Executes every hour.
     'collect-news-every-hour': { 
          'task': 'databases.task.demo_program', 
-         'schedule':  3600.0,
+         'schedule':  60.0,
         },          
 }
